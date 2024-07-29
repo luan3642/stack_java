@@ -4,8 +4,8 @@ package br.com.alldirect.oo;
 public class Stack{
 	
 	
-	private int[] pilha;
-	private int topo;
+	public int[] pilha;
+	public int topo;
 	
 	// construtor inicializa a pilha com seu tamanho
 	// inicializa o topo como -1 para sabermos que a pilha comeca vazia
@@ -16,7 +16,7 @@ public class Stack{
 	}
 	
 	// metodo de adicionar um elemento no topo da pilha
-	public static int push(int elemento) {
+	public int push(int elemento) {
 		if(topo == pilha.length - 1) {
 			throw new StackOverflowError("A pilha está cheia");
 		}
