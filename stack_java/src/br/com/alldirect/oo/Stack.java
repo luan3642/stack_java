@@ -39,6 +39,14 @@ public class Stack{
 		System.out.print("]");
 	}
 	
+	
+	public boolean isFull() {
+		return this.pilha.length - 1 == topo;
+	}
+	public boolean isEmpty() {
+		return this.topo == -1;
+	}
+	
 	public static void main(String[] args) {
 		
 		Stack stack = new Stack(5);
@@ -47,12 +55,15 @@ public class Stack{
 		stack.push(2);
 		stack.push(3);
 		stack.push(10);
+		stack.push(1);
+		
 		
 		
 		
 		stack.exibePilha();
 		System.out.println();
 		System.out.println("topo :"+stack.peak());
-
+		System.out.println("a pilha está vazia? "+stack.isEmpty());
+		System.out.println("A pilha está cheia? "+stack.isFull());
 	}
 }
