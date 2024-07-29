@@ -4,8 +4,8 @@ package br.com.alldirect.oo;
 public class Stack{
 	
 	
-	private static int[] pilha;
-	private static int topo;
+	private int[] pilha;
+	private int topo;
 	
 	// construtor inicializa a pilha com seu tamanho
 	// inicializa o topo como -1 para sabermos que a pilha comeca vazia
@@ -24,12 +24,24 @@ public class Stack{
 	}
 	
 	public int peak() {
+		if(isEmpty()) {
+			throw new IllegalArgumentException("A pilha está vazia");
+		}
 		return pilha[topo];
+	}
+	
+	public int pop() {
+		if(isEmpty()) {
+			throw new IllegalArgumentException("A pilha já esta vazia");
+		}
+		int elementoRemovido = this.pilha[topo];
+		this.pilha[topo--] = 0;
+		return elementoRemovido;
 	}
 	
 	public void exibePilha() {
 		System.out.print("[");
-		for(int i = 0; i <pilha.length; i++) {
+		for(int i = 0; i <topo; i++) {
 			System.out.print(pilha[i]);	
 			if(i != pilha.length-1) {
 				System.out.print(",");
@@ -44,6 +56,9 @@ public class Stack{
 		return this.pilha.length - 1 == topo;
 	}
 	public boolean isEmpty() {
+		if(this.topo == -1) {
+			throw new IllegalArgumentException("já está vazio");
+		}
 		return this.topo == -1;
 	}
 	
@@ -65,5 +80,7 @@ public class Stack{
 		System.out.println("topo :"+stack.peak());
 		System.out.println("a pilha está vazia? "+stack.isEmpty());
 		System.out.println("A pilha está cheia? "+stack.isFull());
+		System.out.println("Elemento desimpilhado: "+stack.pop());
+		stack.exibePilha();
 	}
 }
